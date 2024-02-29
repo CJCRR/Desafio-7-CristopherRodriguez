@@ -1,0 +1,23 @@
+
+<div class="container-fluid product">
+    <div class="box-product">
+    {{#with product}}
+        <div class="row" id={{id}}>
+            <div class="col">
+                <img src={{thumbnail}} class="card-img-top" alt={{title}}>
+            </div>
+            <div class=" col">
+                <h5 class="card-title">{{title}}</h5>
+                <p class="card-title">{{_id}}</p>
+                <p class="card-text">Descripción: {{description}}</p>
+                <p class="card-text">Código: {{code}}</p>
+                <p class="card-text">categoria: {{category}}</p>
+                <div class="row">
+                    <p class="card-text col">Stock: {{stock}}</p>
+                    <p class="card-text col">Precio: ${{price}}</p>
+                </div>
+            </div>
+        </div>
+    {{/with}}
+    </div>
+</div>
