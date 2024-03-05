@@ -2,6 +2,7 @@ import { Router } from "express";
 import bcrypt from "bcryptjs"; // Librería para encriptar contraseñas
 import User from "../dao/models/user.model.js";
 import { hasAdminCredentials } from "../public/js/authMiddleware.js";
+import passport from "passport";
 
 const router = Router();
 
@@ -86,5 +87,13 @@ router.post('/login', async (req, res) => {
         return res.status(500).json({ message: 'Error en el servidor.' });
     }
 });
+
+//Autenticación. Estrategia con GitHub.
+router.get("/github", passport.authenticate("github", { scope: ["user:email"] }), async (req, res) => { })
+
+router.get("/githubcallback", passport.authenticate("github", { failureRedirect: "/login" }), async (req, res) => {
+    req.session.user = req.user;
+    res.redirect("/profile")
+})
 
 export default router;

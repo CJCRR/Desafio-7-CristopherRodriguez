@@ -16,9 +16,8 @@ import sessionsRouter from "./routes/sessions.router.js"
 import session from "express-session"
 import MongoStore from "connect-mongo"
 
-//import { ProductManager } from './dao/file/manager/ProductManager.js'
-
-//const productManager = new ProductManager('./src/dao/file/db/products.json')
+import passport from 'passport'
+import initializePassport from './config/passport.config.js'
 
 const app = express();
 
@@ -49,6 +48,11 @@ app.use(
   })
 );
 
+// configuracion de passport
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/api/products', routerProducts);
 app.use('/api/carts', routerCarts);
 app.use("/", viewsRoutes);
@@ -61,8 +65,8 @@ app.use((req, res) => {
 
 connectToDB()
 
-const httpServer = app.listen(8090, () => {
-  console.log("Escuchando puerto 8090");
+const httpServer = app.listen(8080, () => {
+  console.log("Escuchando puerto 8080");
 });
 
 const socketServer = new Server(httpServer)
