@@ -17,7 +17,7 @@ const isAdmin = (req, res, next) => {
 
 const hasAdminCredentials = (email, password) => {
     // Verificar si las credenciales coinciden con las del administrador
-    return email === 'adminCoder@coder.com' && password === 'adminCod3r123';
+    return email === 'adminCJCRR@coder.com' && password === 'adminCJCRR123';
 };
 
 export { isAuthenticated, isAdmin, hasAdminCredentials };
