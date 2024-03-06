@@ -91,23 +91,21 @@ const initializePassport = () => {
     }, async (accessToken, refreshToken, profile, done) => {
         console.log(profile)
         try {
-            const userEmail = profile._json.email || 'default@example.com'; // set default email if missing
-            const userFirstName = profile._json.name || 'Anonymous'; // set default first_name if missing
-            const user = await UserModel.findOne({ email: userEmail })
-            if (user) return done(null, user)
-            const newUser = await UserModel.create({
-                first_name: userFirstName,
-                last_name: " ",
-                email: userEmail,
-                age: 24,
-                password: " "
-            })
-            return done(null, newUser)
-        }
-        catch (error) {
-            console.log(error.message)
-            return done('Error al intentar loguearse con Github.')
-        }
+          const user = await UserModel.findOne({ email: profile._json.email})
+          if (user) return done(null, user)
+          const newUser = await UserModel.create({
+              first_name: profile._json.name,
+              last_name: " ",
+              email: profile._json.email,
+              age: 0,
+              password: " "
+          })
+          return done(null, newUser)
+      }
+      catch (error) {
+          console.log(error.message)
+          return done('Error al intentar loguearse con Github.')
+      }
     }));
 
     passport.serializeUser((user, done) => {

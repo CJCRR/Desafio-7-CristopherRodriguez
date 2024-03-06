@@ -99,6 +99,47 @@
 .box-form-login .formLogin .buttonsLogin button {
   border-radius: 10px;
 }
+.box-form-login .loginGithub {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box-form-login .loginGithub .pageGithub {
+  text-decoration: none;
+}
+.box-form-login .loginGithub .pageGithub .buttonGithub {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  gap: 15px;
+  background-color: #181717;
+  outline: 3px #181717 solid;
+  outline-offset: -3px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 400ms;
+}
+.box-form-login .loginGithub .pageGithub .buttonGithub svg path {
+  transition: 400ms;
+}
+.box-form-login .loginGithub .pageGithub .buttonGithub:hover {
+  background-color: transparent;
+}
+.box-form-login .loginGithub .pageGithub .buttonGithub:hover .textGithub {
+  color: #181717;
+}
+.box-form-login .loginGithub .pageGithub .buttonGithub:hover svg path {
+  fill: #181717;
+}
+.box-form-login .loginGithub .pageGithub .buttonGithub .textGithub {
+  color: white;
+  font-weight: 700;
+  font-size: 1em;
+  transition: 400ms;
+}
 
 .buttonRegister {
   width: 20%;
